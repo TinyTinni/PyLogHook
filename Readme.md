@@ -1,4 +1,4 @@
-﻿# LogHook for C++ Embedded Python
+# LogHook for C++ Embedded Python
 Redirects text send to sys.stdout/stderr from Python to a user defined C/C++ function.
 
 When you write your own interpreter for embedded python, you are maybe interested in
