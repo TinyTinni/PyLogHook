@@ -53,7 +53,7 @@ Before calling one of the functions, make sure
 
 ## Exceptions
 If anything went wrong, a Python exception was raised.
-You can check, if a there is a pending exception via ```PyErr_Occurred()``` (See [tests](./tests/test.cpp)).
+You can check, if a there is a pending exception via ```PyErr_Occurred()``` (See [tests](./tests/test.h)).
 
 ## License
 [MIT License](./LICENSE) © Matthias Möller. Made with ♥ in Germany.
