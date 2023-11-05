@@ -1,6 +1,6 @@
 //MIT License
 //
-//Copyright(c) 2017 Matthias Möller
+//Copyright(c) 2017 Matthias MÃ¶ller
 //https://github.com/TinyTinni/PyLogHook
 //
 //Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ namespace tyti {
 
 #ifdef TYTI_PYLOGHOOK_USE_BOOST
             template <typename T>
-            inline boost::python::object LogHookMakeObject(T t)
+            inline boost::python::object LogHookMakeObject(T&& t)
             {
                 return boost::python::object(boost::python::make_function(
                     std::forward<T>(t),
@@ -49,7 +49,7 @@ namespace tyti {
             }
 #else
             template<typename T>
-            inline pybind11::object LogHookMakeObject(T t)
+            inline pybind11::object LogHookMakeObject(T&& t)
             {
                 return pybind11::cpp_function(std::forward<T>(t));
             }
