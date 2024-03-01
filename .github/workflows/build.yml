@@ -16,15 +16,15 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         build_type: [Release]
-        cpp_compiler: [gcc, clang]
+        cpp_compiler: [gcc, clang++]
         boost_defitinion: ["", "-DTYTI_PYLOGHOOK_USE_BOOST"]
-        include:
-          - os: ubuntu-latest
-            c_compiler: gcc
-            cpp_compiler: g++
-          - os: ubuntu-latest
-            c_compiler: clang
-            cpp_compiler: clang++
+        #include:
+        #  - os: ubuntu-latest
+        #    c_compiler: gcc
+        #    cpp_compiler: g++
+        #  - os: ubuntu-latest
+        #    c_compiler: clang
+        #    cpp_compiler: clang++
 
     steps:
     - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
     - name: Install depdencies
       run: |
         sudo apt-get -y update
-        sudo apt-get -y install libboost-all-dev python-pybind11
+        sudo apt-get -y install libboost-all-dev pybind11
 
     - name: Set reusable strings
       id: strings
@@ -44,7 +44,6 @@ jobs:
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
-        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         ${{ matrix.boost_defitinion }}
         -S ${{ github.workspace }}
