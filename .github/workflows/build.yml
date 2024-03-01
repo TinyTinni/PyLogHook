@@ -16,15 +16,8 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         build_type: [Release]
-        cpp_compiler: [gcc, clang++]
+        cpp_compiler: [ clang++]
         use_boost: ["ON", "OFF"]
-        #include:
-        #  - os: ubuntu-latest
-        #    c_compiler: gcc
-        #    cpp_compiler: g++
-        #  - os: ubuntu-latest
-        #    c_compiler: clang
-        #    cpp_compiler: clang++
 
     steps:
     - uses: actions/checkout@v4
