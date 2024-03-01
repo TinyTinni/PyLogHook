@@ -1,4 +1,4 @@
-#include <catch.hpp>
+#include "doctest.h"
 
 #include "../PyLogHook.h"
 
@@ -12,8 +12,8 @@ inline void check_python_error()
 
         PyObject *ptype, *pvalue, *ptraceback;
         PyErr_Fetch(&ptype, &pvalue, &ptraceback);
-        PyObject* pyErrStr = PyObject_Str(ptype);
-        FAIL(PyUnicode_AsUTF8(pyErrStr)); 
+        PyObject *pyErrStr = PyObject_Str(ptype);
+        FAIL(PyUnicode_AsUTF8(pyErrStr));
         Py_DECREF(pyErrStr);
         PyErr_Restore(ptype, pvalue, ptraceback);
     }
@@ -25,21 +25,20 @@ TEST_CASE(NAME_PRE("Print test"), "[PyLogHook]")
     Py_Initialize();
     REQUIRE(Py_IsInitialized() != 0);
 
-    //set hook
+    // set hook
     std::string stdoutString;
-    tyti::pylog::redirect_stdout([&stdoutString](const char*w)
-    {
-        stdoutString += w; //stdout
-    });
+    tyti::pylog::redirect_stdout([&stdoutString](const char *w)
+                                 {
+                                     stdoutString += w; // stdout
+                                 });
     check_python_error();
 
     std::string stderrString;
-    tyti::pylog::redirect_stderr([&stderrString](const char*w)
-    {
-        stderrString += w; //stdout
-    });
+    tyti::pylog::redirect_stderr([&stderrString](const char *w)
+                                 {
+                                     stderrString += w; // stdout
+                                 });
     check_python_error();
-
 
     // execute printing operation
     const std::string test_str = "TESTING";
@@ -51,7 +50,6 @@ TEST_CASE(NAME_PRE("Print test"), "[PyLogHook]")
         check_python_error();
         // check
         REQUIRE(stdoutString == test_str + "\n");
-        
     }
     SECTION("testing stderr")
     {
@@ -62,7 +60,6 @@ TEST_CASE(NAME_PRE("Print test"), "[PyLogHook]")
         // check
         REQUIRE(stderrString == test_str);
     }
-
 
     Py_Finalize();
 }
