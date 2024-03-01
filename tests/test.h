@@ -19,7 +19,7 @@ inline void check_python_error()
     }
 }
 
-TEST_CASE(NAME_PRE("Print test"), "[PyLogHook]")
+TEST_CASE("Print test")
 {
     // init Python
     Py_Initialize();
@@ -42,7 +42,7 @@ TEST_CASE(NAME_PRE("Print test"), "[PyLogHook]")
 
     // execute printing operation
     const std::string test_str = "TESTING";
-    SECTION("testing stdout")
+    SUBCASE("testing stdout")
     {
         std::string code = std::string("print(\"") + test_str + std::string("\")");
 
@@ -51,7 +51,7 @@ TEST_CASE(NAME_PRE("Print test"), "[PyLogHook]")
         // check
         REQUIRE(stdoutString == test_str + "\n");
     }
-    SECTION("testing stderr")
+    SUBCASE("testing stderr")
     {
         std::string code = std::string("import sys\nsys.stderr.write(\"") + test_str + std::string("\")");
 
