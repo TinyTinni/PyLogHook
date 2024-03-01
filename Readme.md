@@ -20,9 +20,6 @@ the output to any given function.
 
 If you use Boost, define TYTI_PYLOGHOOK_USE_BOOST before include PyLogHook.h.
 
-for tests:
-- [Catch](https://github.com/philsquared/Catch)
-
 ## How-To
 Call one of the functions in namespace ```tyti::pylog```.
 ```cpp
