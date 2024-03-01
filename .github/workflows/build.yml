@@ -4,7 +4,7 @@ name: CMake
 
 on:
   push:
-    branches: [ "master", "workflow" ]
+    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -32,7 +32,9 @@ jobs:
     - name: Install depdencies
       run: |
         sudo apt-get -y update
-        sudo apt-get -y install libboost-all-dev pybind11
+        sudo apt-get -y install libboost-all-dev
+    - name: Install pybind11
+      run: sudo pip install "pybind11[global]"
 
     - name: Set reusable strings
       id: strings
