@@ -1,4 +1,6 @@
 # LogHook for C++ Embedded Python
+
+[![CMake](https://github.com/TinyTinni/PyLogHook/actions/workflows/build.yml/badge.svg)](https://github.com/TinyTinni/PyLogHook/actions/workflows/build.yml)  
 Redirects text send to sys.stdout/stderr from Python to a user defined C/C++ function.
 
 When you write your own interpreter for embedded python, you are maybe interested in
@@ -23,7 +25,7 @@ for tests:
 
 ## How-To
 Call one of the functions in namespace ```tyti::pylog```.
-```
+```cpp
 // in case of using Boost.Python
 #define TYTI_PYLOGHOOK_USE_BOOST 
 //------------------------------
