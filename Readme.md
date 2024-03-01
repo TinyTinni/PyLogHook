@@ -20,6 +20,10 @@ the output to any given function.
 
 If you use Boost, define TYTI_PYLOGHOOK_USE_BOOST before include PyLogHook.h.
 
+## Install
+
+It is header only. Just add [PyLogHook.h](PyLogHook.h) to your project which should already link against boost.python or pybind11.
+
 ## How-To
 Call one of the functions in namespace ```tyti::pylog```.
 ```cpp
