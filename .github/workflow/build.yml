@@ -32,7 +32,7 @@ jobs:
     - name: Install depdencies
       run: |
         sudo apt-get -y update
-        sudo apt-get -y install libboost-all-dev pybind11
+        sudo apt-get -y install libboost-all-dev python-pybind11
 
     - name: Set reusable strings
       id: strings
